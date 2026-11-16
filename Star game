@@ -1,0 +1,15 @@
+workflows:
+  star-clicker-android:
+    name: STAR CLICKER Android APK
+    max_build_duration: 60
+    instance_type: linux_x2
+    scripts:
+      - name: Unpack Android project
+        script: |
+          unzip -o STAR_CLICKER_Android.zip
+      - name: Build debug APK
+        script: |
+          cd STAR_CLICKER_Android
+          gradle assembleDebug
+    artifacts:
+      - STAR_CLICKER_Android/app/build/outputs/apk/debug/*.apk
